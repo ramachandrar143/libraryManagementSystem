@@ -1,0 +1,56 @@
+<div>
+    <div class="container-fluid">
+
+        <span class="row"></span>
+        <span class="row"></span>
+        <span class="col-sm-2"></span>
+        <div class="panel panel-default col-sm-8">
+            <span class="row"></span>
+            <div class="panel-heading">
+                <h5>
+                    <center>Book Search</center>
+                </h5>
+            </div>
+            <div class="panel-body">
+                <form ng-submit="issueBooks()">
+                    <div class="input-group">
+                        <span class="input-group-addon">Student</span>
+                        <input type="text" name="stuNum" class="form-control" ng-model="data.id" placeholder="Registration number" required>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">&nbsp;Book&nbsp;&nbsp;&nbsp;</span>
+                        <input type="number" name="bookNum" class="form-control" ng-model="data.bookAccount" placeholder="Book number" required>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <input type="date" name="date" ng-model="data.date" class="form-control" required>
+                    </div>
+                    <br>
+                    <input type="submit" class="btn btn-primary" value="Issue books">
+                </form>
+                <span class={{class}}>{{result}}</span>
+                <span class="row"></span>
+                <table class="table table-hover">
+                    <tr bgcolor=#F2F2F2>
+                        <th>Days</th>
+                        <th>Amount(₹)</th>
+                    </tr>
+                    <tr>
+                        <td>28 Days</td>
+                        <td>₹ 0.00</td>
+                    </tr>
+                    <tr>
+                        <td>29-56 Days</td>
+                        <td> ₹ 1.00</td>
+                    </tr>
+                    <tr>
+                        <td>58 Days</td>
+                        <td>₹ 2.00</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

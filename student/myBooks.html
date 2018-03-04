@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Books</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script>
+        var app = angular.module('student', []);
+        app.controller('myBooks', function ($http, $scope) {
+
+            window.onload = function () {
+                var res = {
+                    method: 'POST',
+                    url: '/getStudentBooks',
+                    data: { 'a': 'b' },
+                    headers: {
+                        'Content-Type': 'Application/json'
+                    }
+                }
+                $http(res).then(function (resp) {
+                    console.log(resp.data)
+                    $scope.data = resp.data;
+                })
+            }
+        })
+    </script>
+</head>
+
+<body ng-app="student" ng-controller="myBooks">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Miracle Library</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="student.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="bookSearch.html">Book Search</a>
+                    </li>
+
+                    <li>
+                        <a href="myBooks.html">My books</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/studentEdit.html">Edit Your profile</a>
+                    </li>
+                    <li>
+                        <a href="../index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="img">
+        <div id="clr">
+            <!---  panel -->
+            <div class="panel panel-default">
+
+                <table class="table">
+                    <tr ng-repeat="book in data">
+                        <td>
+                            {{book.bookAccount}}
+                        </td>
+                        <td>
+                            {{book}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>

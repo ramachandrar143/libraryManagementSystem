@@ -1,0 +1,52 @@
+<span class="row"></span>
+<span class="row"></span>
+<span class="row"></span>
+<span class="row"></span>
+<span class="row"></span>
+<span class="row"></span>
+<span class="row"></span>
+<span class="row"></span>
+<span class="col-sm-4"></span>
+<div class="col-sm-4">
+    <div class="panel panel-default">
+        <h3>
+            <center>Add Book</center>
+        </h3>
+        <form ng-submit="formSubmit()">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-book"></i>
+                </span>
+                <input type="text" placeholder="Book name" ng-model="data.book" class="form-control input-lg">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-barcode"></i>
+                </span>
+                <input type="number" placeholder="Book Number" ng-model="data.number" class="form-control input-lg">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                </span>
+                <input type="text" placeholder="Book Author" ng-model="data.author" class="form-control input-lg">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-duplicate"></i>
+                </span>
+                <input type="number" placeholder="Stock" ng-model="data.stock" class="form-control input-lg">
+            </div>
+
+            <div class="{{class}}">
+                <center>{{result}}</center>
+            </div>
+            <input type="submit" value="Add" class="btn btn-primary btn-block btn-lg">
+
+        </form>
+    </div>
+</div>
+<span class="col-sm-4"></span>

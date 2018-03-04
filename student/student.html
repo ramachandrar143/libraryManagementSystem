@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Student section</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script>
+        var app = angular.module('student', []);
+        app.controller('studentMain', function ($http, $scope) {
+
+            window.onload = function () {
+                var res = {
+                    method: 'POST',
+                    url: '/getStudent',
+                    data: { 'a': 'b' },
+                    headers: {
+                        'Content-Type': 'Application/json'
+                    }
+                }
+                $http(res).then(function (resp) {
+                    $scope.data = resp.data[0];
+                })
+            }
+        })
+    </script>
+</head>
+
+<body ng-app="student" ng-controller="studentMain">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Miracle Library</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="student.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="bookSearch.html">Book Search</a>
+                    </li>
+
+                    <li>
+                        <a href="myBooks.html">My books</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/studentEdit.html">Edit Your profile</a>
+                    </li>
+                    <li>
+                        <a href="../index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="img">
+        <div id="clr">
+            <!---  panel -->
+            <div class="panel panel-default">
+                <table class="table">
+                    <tr>
+                        <td>
+                            ID 
+                        </td>
+                        <td>
+                            {{data.id}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{data.name}}</td>
+                    </tr>
+                </table>
+
+            </div>
+            <!-- panel end -->
+
+        </div>
+    </div>
+</body>
+
+</html>

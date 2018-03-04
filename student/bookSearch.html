@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Search Books </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <style>
+        input[type=radio]+.ip {
+            display: none;
+        }
+
+        input[type=radio]:checked+.name {
+            display: block;
+        }
+    </style>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($http, $scope) {
+
+            $scope.searchBook = function () {
+                console.log($scope.data)
+                var res = {
+                    method: 'POST',
+                    url: '/searchBook',
+                    data: $scope.data,
+                    headers: {
+                        'Content-Type': 'Application/json'
+                    }
+                }
+                $http(res).then(function (resp) {
+                    $scope.books = resp.data;
+                    $scope.head = [{
+                        "title": "Book Name",
+                        "author": "Author",
+                        "number": "Book Number",
+                        "Stock": "Stock",
+                        "Available": "Available Books"
+                    }]
+                })
+            }
+            $scope.searchAuthor = function () {
+                var res = {
+                    method: 'POST',
+                    url: '/searchAuthor',
+                    data: $scope.data,
+                    headers: {
+                        'Content-Type': 'Application/json'
+                    }
+                }
+                $http(res).then(function (resp) {
+                    $scope.books = resp.data;
+                    $scope.head = [{
+                        "title": "Book Name",
+                        "author": "Author",
+                        "number": "Book Number",
+                        "Stock": "Stock",
+                        "Available": "Available Books"
+                    }]
+                })
+            }
+            $scope.searchNumber = function () {
+                var res = {
+                    method: 'POST',
+                    url: '/searchNumber',
+                    data: $scope.data,
+                    headers: {
+                        'Content-Type': 'Application/json'
+                    }
+                }
+                $http(res).then(function (resp) {
+                    $scope.books = resp.data;
+                    $scope.head = [{
+                        "title": "Book Name",
+                        "author": "Author",
+                        "number": "Book Number",
+                        "Stock": "Stock",
+                        "Available": "Available Books"
+                    }]
+                })
+            }
+        })
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Miracle Library</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="student.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="bookSearch.html">Book Search</a>
+                    </li>
+
+                    <li>
+                        <a href="myBooks.html">My books</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/studentEdit.html">Edit Your profile</a>
+                    </li>
+                    <li>
+                        <a href="../index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="img">
+        <div id="clr">
+            <div>
+                <div class="container-fluid">
+                    <span class="row"></span>
+                    <span class="row"></span>
+                    <span class="col-sm-3"></span>
+
+                    <div class="panel panel-default col-sm-6">
+                        <span class="row"></span>
+                        <div class="panel-heading">
+                            <h5>
+                                <center>Book Search</center>
+                            </h5>
+                        </div>
+                        <div class="panel-body">
+                            <b>I have a</b> :
+                            <br>
+
+                            <div>
+                                <input type="radio" name="type"> Book name
+
+                                <div class="ip name">
+                                    <form ng-submit="searchBook()">
+                                        <input type="text" class="form-control" ng-model="data.keyword" name="bookName" id="BookName" placeholder="Book Name">
+                                        <input type="submit" class="btn" value="Search">
+                                    </form>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="type">Author
+                                <div class="ip name">
+                                    <form ng-submit="searchAuthor()">
+                                        <input type="text" class="form-control" ng-model="data.keyword">
+                                        <input type="submit" class="btn" value="Search">
+                                    </form>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="type">Book number
+                                <div class="ip name">
+                                    <form ng-submit="searchNumber()">
+                                        <input type="text" class="form-control" ng-model="data.keyword">
+                                        <input type="submit" class="btn" value="Search">
+                                    </form>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+
+                        <!-- Table -->
+
+                        <table class="table table-hover">
+                            <tr bgcolor=#F2F2F2 ng-repeat="th in head">
+                                <th>{{th.title}}</th>
+                                <th>{{th.author}}</th>
+                                <th>{{th.number}}</th>
+                                <th>{{th.Stock}}</th>
+                                <th>{{th.Available}}</th>
+                            </tr>
+                            <tr ng-repeat="book in books">
+                                <td>{{book.book}}</td>
+                                <td>{{book.author}}</td>
+                                <td>{{book.bookAccount}}</td>
+                                <td>{{book.Stock}}</td>
+                                <td>{{book.available}}</td>
+                            </tr>
+                        </table>
+
+
+
+                    </div>
+                    <span class="col-sm-2"></span>
+                    <span class="row"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

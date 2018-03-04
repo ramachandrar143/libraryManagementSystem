@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Staff section</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-route.js"></script>
+    <script src="myCtrl.js"></script>
+    <script src="controllers/bookSearch.js"></script>
+    <script src="controllers/bookReturn.js"></script>
+    <script src="controllers/addBook.js"></script>
+    <script src="controllers/bookIssue.js"></script>
+    <script src="controllers/stuRegi.js"></script>
+</head>
+
+<body ng-app="myApp">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Miracle Library</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#!bookSearch">Book Search</a>
+                    </li>
+                    <li>
+                        <a href="#!bookIssue">Book Issue</a>
+                    </li>
+                    <li>
+                        <a href="#!bookReturn">Book Return</a>
+                    </li>
+                    <li>
+                        <a href="#!bookRenewal">Book Renewal</a>
+                    </li>
+                    <li>
+                        <a href="#!addBook">Add Book</a>
+                    </li>
+                    <li>
+                        <a href="#!stuRegi">Register Student</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div id="img">
+        <div id="clr">
+            <div ng-view></div>
+        </div>
+    </div>
+</body>
+
+</html>

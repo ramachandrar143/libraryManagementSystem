@@ -1,0 +1,83 @@
+<style>
+    input[type=radio]+.ip {
+        display: none;
+    }
+
+    input[type=radio]:checked+.name {
+        display: block;
+    }
+</style>
+<div>
+    <div class="container-fluid">
+        <span class="row"></span>
+        <span class="row"></span>
+        <span class="col-sm-3"></span>
+
+        <div class="panel panel-default col-sm-6">
+            <span class="row"></span>
+            <div class="panel-heading">
+                <h5>
+                    <center>Book Search</center>
+                </h5>
+            </div>
+            <div class="panel-body">
+                <b>I have a</b> :
+                <br>
+
+                <div>
+                    <input type="radio" name="type"> Book name
+
+                    <div class="ip name">
+                        <form ng-submit="searchBook()">
+                            <input type="text" class="form-control" ng-model="data.keyword" required name="bookName" id="BookName" placeholder="Book Name">
+                            <input type="submit" class="btn" value="Search">
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    <input type="radio" name="type">Author
+                    <div class="ip name">
+                        <form ng-submit="searchAuthor()">
+                            <input type="text" class="form-control" ng-model="data.keyword">
+                            <input type="submit" class="btn" value="Search">
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    <input type="radio" name="type">Book number
+                    <div class="ip name">
+                        <form ng-submit="searchNumber()">
+                            <input type="text" class="form-control" ng-model="data.keyword">
+                            <input type="submit" class="btn" value="Search">
+                        </form>
+                    </div>
+                </div>
+                </form>
+            </div>
+
+            <!-- Table -->
+
+            <table class="table table-hover">
+                <tr bgcolor=#F2F2F2 ng-repeat="th in head">
+                    <th>{{th.title}}</th>
+                    <th>{{th.author}}</th>
+                    <th>{{th.number}}</th>
+                    <th>{{th.Stock}}</th>
+                    <th>{{th.Available}}</th>
+                </tr>
+                <tr ng-repeat="book in books">
+                    <td>{{book.book}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.bookAccount}}</td>
+                    <td>{{book.Stock}}</td>
+                    <td>{{book.available}}</td>
+                </tr>
+            </table>
+
+
+
+        </div>
+        <span class="col-sm-2"></span>
+        <span class="row"></span>
+    </div>
+</div>

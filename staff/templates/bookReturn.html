@@ -1,0 +1,57 @@
+<div>
+    <div class="container-fluid">
+
+        <span class="row"></span>
+        <span class="row"></span>
+        <span class="col-sm-2"></span>
+        <div class="panel panel-default col-sm-8">
+            <span class="row"></span>
+            <div class="panel-heading">
+                <h5>
+                    <center>Book Return</center>
+                </h5>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <form ng-submit="search()">
+                        <div class="input-group">
+                            <span class="input-group-addon">Student</span>
+                            <input type="text" name="stuNum" class="form-control" ng-model="data.id" placeholder="Registration number" required>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">Book number</span>
+                            <input type="number" placeholder="Book number" ng-model="data.number" name="bookNumber" class="form-control">
+                        </div>
+                        <span class="row"></span>
+                        &nbsp;&nbsp;&nbsp;
+                        <input type="submit" value="Get Details" class="btn">
+                    </form>
+                    <br>
+                    <span class="{{noBooksclass}}">{{noBooksdata}}</span>
+                    <table class="table">
+                        <tr ng-repeat="th in title">
+                            <th>{{th.id}}</th>
+                            <th>{{th.num}}</th>
+                            <th>{{th.issue}}</th>
+                            <th>{{th.fine}}</th>
+                        </tr>
+                        <tr ng-repeat="td in data">
+                            <td>{{td.id}}</td>
+                            <td>{{td.bookAccount}}</td>
+                            <td>{{td.date}}</td>
+                            <td>{{fine}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" ng-show="button">
+                                <form ng-submit="submit()">
+                                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Return Book">
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
